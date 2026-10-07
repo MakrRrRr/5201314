@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5201314</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      background: #fff7fb;
+      color: #4b3040;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    /* TOP */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .number {
+      font-size: clamp(4rem, 15vw, 9rem);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #d96b98;
+      text-shadow: 0 8px 25px rgba(217, 107, 152, 0.2);
+    }
+    .scroll-text {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      opacity: 0.7;
+      animation: float 2s ease-in-out infinite;
+    }
+    .arrow {
+      font-size: 2rem;
+      margin-top: 8px;
+      animation: float 2s ease-in-out infinite;
+    }
+    /* LONG SCROLL */
+    .space {
+      height: 150vh;
+      position: relative;
+    }
+    .tiny-text {
+      position: absolute;
+      bottom: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.35;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    /* EXPLANATION */
+    .meaning {
+      min-height: 100vh;
+      padding: 100px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: clamp(2rem, 7vw, 4rem);
+      margin-bottom: 25px;
+      color: #c65384;
+    }
+    .explanation {
+      max-width: 650px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+    /* BUTTON */
+    .decode-button {
+      margin-top: 40px;
+      padding: 16px 35px;
+      border: none;
+      border-radius: 999px;
+      background: #d96b98;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(217, 107, 152, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .decode-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(217, 107, 152, 0.35);
+    }
+    .decode-button:active {
+      transform: scale(0.96);
+    }
+    /* ANSWER */
+    .answer {
+      margin-top: 35px;
+      font-size: clamp(1.8rem, 7vw, 3.5rem);
+      font-weight: 800;
+      color: #c65384;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+    .answer.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(8px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- FIRST SCREEN -->
+  <section class="hero">
+    <div class="number">5201314</div>
+    <div class="scroll-text">
+      scroll down
+    </div>
+    <div class="arrow">↓</div>
+  </section>
+  <!-- LONG SCROLLING SPACE -->
+  <section class="space">
+    <div class="tiny-text">
+      keep scrolling...
+    </div>
+  </section>
+  <!-- EXPLANATION -->
+  <section class="meaning">
+    <h1>what does 5201314 mean?</h1>
+    <p class="explanation">
+      Chinese internet slang sometimes uses numbers because their
+      pronunciations can sound similar to words or phrases in Chinese.
+      In this case, 5201314 means...
+    </p>
+    <button class="decode-button" onclick="decode()">
+      5201314
+    </button>
+    <div id="answer" class="answer">
+      I love you forever
+    </div>
+  </section>
+  <script>
+    function decode() {
+      const answer = document.getElementById("answer");
+      answer.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
