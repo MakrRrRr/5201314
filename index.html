@@ -13,13 +13,54 @@
     }
     body {
       margin: 0;
-      background: #fff7fb;
-      color: #4b3040;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 190, 220, 0.35), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(220, 190, 255, 0.3), transparent 30%),
+        #fff8fc;
+      color: #503848;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       text-align: center;
       overflow-x: hidden;
     }
-    /* TOP */
+    .decor {
+      position: fixed;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      opacity: 0.5;
+      animation: drift 7s ease-in-out infinite;
+    }
+    .decor.one {
+      top: 12%;
+      left: 8%;
+      font-size: 2rem;
+    }
+    .decor.two {
+      top: 25%;
+      right: 10%;
+      font-size: 1.5rem;
+      animation-delay: 1s;
+    }
+    .decor.three {
+      top: 60%;
+      left: 13%;
+      font-size: 1.4rem;
+      animation-delay: 2s;
+    }
+    .decor.four {
+      top: 75%;
+      right: 12%;
+      font-size: 2rem;
+      animation-delay: 3s;
+    }
+    @keyframes drift {
+      0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(5deg);
+      }
+    }
     .hero {
       height: 100vh;
       min-height: 600px;
@@ -28,40 +69,94 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      z-index: 1;
+    }
+    .small-label {
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 20px;
     }
     .number {
-      font-size: clamp(4rem, 15vw, 9rem);
-      font-weight: 800;
+      font-size: clamp(4rem, 16vw, 10rem);
+      font-weight: 900;
       letter-spacing: 0.08em;
-      color: #d96b98;
-      text-shadow: 0 8px 25px rgba(217, 107, 152, 0.2);
+      color: #d65d91;
+      text-shadow: 0 10px 35px rgba(214, 93, 145, 0.2);
+      animation: appear 1.2s ease forwards;
     }
     .scroll-text {
-      margin-top: 30px;
-      font-size: 1.1rem;
-      opacity: 0.7;
-      animation: float 2s ease-in-out infinite;
+      margin-top: 45px;
+      font-size: 1rem;
+      opacity: 0.6;
+      letter-spacing: 0.08em;
     }
     .arrow {
       font-size: 2rem;
-      margin-top: 8px;
-      animation: float 2s ease-in-out infinite;
+      margin-top: 10px;
+      opacity: 0.6;
+      animation: bounce 1.8s ease-in-out infinite;
     }
-    /* LONG SCROLL */
-    .space {
-      height: 150vh;
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+    }
+    .mystery {
+      min-height: 180vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       position: relative;
+      z-index: 1;
     }
-    .tiny-text {
+    .floating-number {
       position: absolute;
-      bottom: 25%;
-      left: 50%;
-      transform: translateX(-50%);
-      opacity: 0.35;
-      font-size: 0.9rem;
-      white-space: nowrap;
+      font-weight: 800;
+      color: #d77ca3;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
     }
-    /* EXPLANATION */
+    .floating-number.show {
+      opacity: 0.45;
+      transform: translateY(0);
+    }
+    .floating-number.a {
+      top: 20%;
+      left: 15%;
+      font-size: 3rem;
+    }
+    .floating-number.b {
+      top: 45%;
+      right: 14%;
+      font-size: 2.5rem;
+    }
+    .floating-number.c {
+      bottom: 20%;
+      left: 25%;
+      font-size: 1.8rem;
+    }
+    .mystery-message {
+      font-size: 1rem;
+      opacity: 0.45;
+      letter-spacing: 0.1em;
+    }
     .meaning {
       min-height: 100vh;
       padding: 100px 25px;
@@ -69,97 +164,188 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .card {
+      width: min(700px, 100%);
+      padding: clamp(30px, 7vw, 60px);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(214, 93, 145, 0.15);
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(100, 50, 80, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    .chinese {
+      font-size: 2rem;
+      color: #d65d91;
+      margin-bottom: 20px;
+      letter-spacing: 0.2em;
     }
     h1 {
       font-size: clamp(2rem, 7vw, 4rem);
-      margin-bottom: 25px;
+      line-height: 1.1;
+      margin: 0 0 30px;
       color: #c65384;
     }
     .explanation {
-      max-width: 650px;
-      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
       font-size: 1.1rem;
+      line-height: 1.9;
     }
-    /* BUTTON */
+    .highlight {
+      color: #c65384;
+      font-weight: 700;
+    }
     .decode-button {
-      margin-top: 40px;
-      padding: 16px 35px;
+      margin-top: 45px;
+      padding: 17px 38px;
       border: none;
       border-radius: 999px;
-      background: #d96b98;
+      background: #d65d91;
       color: white;
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(217, 107, 152, 0.25);
+      box-shadow: 0 10px 25px rgba(214, 93, 145, 0.25);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .decode-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(217, 107, 152, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(214, 93, 145, 0.35);
     }
     .decode-button:active {
-      transform: scale(0.96);
+      transform: scale(0.94);
     }
-    /* ANSWER */
     .answer {
-      margin-top: 35px;
-      font-size: clamp(1.8rem, 7vw, 3.5rem);
-      font-weight: 800;
+      margin-top: 40px;
+      font-size: clamp(2rem, 8vw, 4rem);
+      font-weight: 900;
       color: #c65384;
       opacity: 0;
-      transform: translateY(15px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.7s ease, transform 0.7s ease;
       pointer-events: none;
     }
     .answer.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
+    .answer-subtext {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      opacity: 0;
+      transition: opacity 0.7s ease 0.2s;
+    }
+    .answer-subtext.show {
+      opacity: 0.55;
+    }
+    footer {
+      padding: 50px 20px 70px;
+      font-size: 0.85rem;
+      opacity: 0.45;
+    }
+    @media (max-width: 600px) {
+      .number {
+        letter-spacing: 0.03em;
       }
-      50% {
-        transform: translateY(8px);
+      .floating-number.a {
+        left: 8%;
+      }
+      .floating-number.b {
+        right: 8%;
+      }
+      .card {
+        border-radius: 24px;
+      }
+      .explanation {
+        font-size: 1rem;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
-  <!-- FIRST SCREEN -->
+  <div class="decor one">♡</div>
+  <div class="decor two">✦</div>
+  <div class="decor three">♡</div>
+  <div class="decor four">✧</div>
   <section class="hero">
+    <div class="small-label">a little secret code</div>
     <div class="number">5201314</div>
-    <div class="scroll-text">
-      scroll down
-    </div>
+    <div class="scroll-text">scroll down</div>
     <div class="arrow">↓</div>
   </section>
-  <!-- LONG SCROLLING SPACE -->
-  <section class="space">
-    <div class="tiny-text">
+  <section class="mystery">
+    <div class="floating-number a">520</div>
+    <div class="floating-number b">1314</div>
+    <div class="floating-number c">5201314</div>
+    <div class="mystery-message">
       keep scrolling...
     </div>
   </section>
-  <!-- EXPLANATION -->
   <section class="meaning">
-    <h1>what does 5201314 mean?</h1>
-    <p class="explanation">
-      Chinese internet slang sometimes uses numbers because their
-      pronunciations can sound similar to words or phrases in Chinese.
-      In this case, 5201314 means...
-    </p>
-    <button class="decode-button" onclick="decode()">
-      5201314
-    </button>
-    <div id="answer" class="answer">
-      I love you forever
+    <div class="card">
+      <div class="chinese">
+        五二零 · 一三一四
+      </div>
+      <h1>what does 5201314 mean?</h1>
+      <p class="explanation">
+        Chinese internet slang sometimes uses numbers because
+        the way certain numbers are pronounced can sound similar
+        to words or phrases in Chinese.
+        <br><br>
+        <span class="highlight">
+          In this case, 5201314 means...
+        </span>
+      </p>
+      <button class="decode-button" onclick="decode()">
+        5201314
+      </button>
+      <div id="answer" class="answer">
+        I love you forever
+      </div>
+      <div id="answerSubtext" class="answer-subtext">
+        secret successfully decoded
+      </div>
     </div>
   </section>
+  <footer>
+    5201314 · a tiny internet secret
+  </footer>
   <script>
+    const floatingNumbers =
+      document.querySelectorAll(".floating-number");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      {
+        threshold: 0.3
+      }
+    );
+    floatingNumbers.forEach((number) => {
+      observer.observe(number);
+    });
     function decode() {
       const answer = document.getElementById("answer");
-      answer.classList.toggle("show");
+      const subtext = document.getElementById("answerSubtext");
+      answer.classList.add("show");
+      subtext.classList.add("show");
     }
   </script>
 </body>
